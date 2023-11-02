@@ -1,0 +1,23 @@
+.gameTitle {
+  text-align: center;
+}
+
+.round {
+  text-align: center;
+}
+
+.gameSpaceScreen {
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url("space.gif");
+}
+
+.scors {
+  display: flex;
+  justify-content: space-around;
+}
+
+footer {
+  text-align: center;
+}
