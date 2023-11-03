@@ -130,6 +130,10 @@ function displayUpdateScreen(sec, text) {
   displyGameUpdateTimeOut = setTimeout(gameUpdate, sec, text);
 }
 
+function reset() {
+  location.reload();
+}
+
 //---Event Listeners--//
 attackButton.addEventListener("click", (evt) => {
   while (true) {
