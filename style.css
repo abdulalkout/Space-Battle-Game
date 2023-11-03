@@ -21,3 +21,18 @@
 footer {
   text-align: center;
 }
+
+.button {
+  margin-top: 50vh;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.gameUpdate {
+  height: 200px;
+  width: 300px;
+  background-color: aqua;
+  text-align: center;
+}
+/* -----------------------------------------------pop UP---------------------------------------------------------*/
