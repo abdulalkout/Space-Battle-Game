@@ -35,4 +35,13 @@ footer {
   background-color: aqua;
   text-align: center;
 }
+
+#reset {
+  display: none;
+  position: absolute;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 /* -----------------------------------------------pop UP---------------------------------------------------------*/

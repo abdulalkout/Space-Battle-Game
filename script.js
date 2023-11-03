@@ -7,7 +7,6 @@ const aliensArray = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Sxgdd3ByE-TJmPHQkr6p_eaHOHYXQ0LFrv3qx_DQ1c5A-1NfCxjtqB-hvBRloFKeQmc&usqp=CAU",
   "https://media1.giphy.com/media/13ea4eXuOuQsmY/giphy.gif",
 ];
-let roundCount = 1;
 
 //---------------------Classes for Players--------------//
 class Alien {
@@ -57,11 +56,14 @@ class User {
 }
 const usAssembly = new User();
 const newAlien = new Alien(3, 3, 0.6);
+let roundCount = 1;
 
 //--------------------------DOM Section-------------------------//
 //----Queries--//
 const titleRound = document.querySelector(".round");
 const gameUpdateScreen = document.querySelector(".gameUpdate");
+
+const popUpButton = document.querySelector("#reset");
 
 const selectUsAssembly = document.querySelector(".usAssemblyScore");
 const userScore = selectUsAssembly.getElementsByTagName("li");
@@ -87,18 +89,20 @@ function displayScors(playerScore, plyerClass) {
 
 function checkScores() {
   if (usAssembly.hull <= 0) {
-    console.log("you lossssss");
+    displayUpdateScreen(2000, "you lossssss");
   } else if (newAlien.hull <= 0) {
-    console.log("You killed the alien");
+    displayUpdateScreen(2000, "You killed the alien");
     nextRound();
     if (roundCount + 1 === 6) {
-      console.log("You Just won the game");
-      // location.reload();
+      displayUpdateScreen(3000, "You Just won the game");
+      popUpButton.style.display = "block";
+      // const reload = setTimeout(location.reload(), 5000);
       return;
     } else {
       roundCount = roundCount + 1;
     }
   }
+  const clearTimeOut = setTimeout(clearUpdateScreen, 4000);
 }
 
 function nextRound() {
@@ -118,33 +122,36 @@ function gameUpdate(updateText) {
   gameUpdateScreen.appendChild(showGameUpdat);
 }
 
+function clearUpdateScreen() {
+  gameUpdateScreen.textContent = "Game Update";
+}
+
+function displayUpdateScreen(sec, text) {
+  displyGameUpdateTimeOut = setTimeout(gameUpdate, sec, text);
+}
+
 //---Event Listeners--//
 attackButton.addEventListener("click", (evt) => {
   while (true) {
     gameUpdate("you Attack");
     let randomNumber1 = Math.random();
     if (randomNumber1 < usAssembly.accuracy) {
-      gameUpdate("the alien got hit"), "1000000";
-      // console.log("the alien got hit");
+      displayUpdateScreen(1000, "the alien got hit");
       newAlien.gotHitted(usAssembly.firepower);
       displayScors(alienScore, newAlien);
       checkScores();
       return;
     } else if (randomNumber1 > usAssembly.accuracy) {
-      gameUpdate("Aliens survived");
-      gameUpdate("Aliens will Attack");
-      // console.log("Aliens survived");
-      // console.log("Aliens will Attack");
+      displayUpdateScreen(1000, "Aliens survived");
+      displayUpdateScreen(2000, "Aliens will Attack");
       if (Math.random() < newAlien.accuracy) {
-        gameUpdate("You have been hitten!");
-        // console.log("You have been hitten!");
+        displayUpdateScreen(3000, "You have been hitten");
         usAssembly.gotHitted(newAlien.firepower);
         displayScors(userScore, usAssembly);
         checkScores();
         return;
       } else {
-        gameUpdate("You Survived");
-        // console.log("you survived");
+        displayUpdateScreen(3000, "You Survived");
       }
     }
   }
