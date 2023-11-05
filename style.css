@@ -1,16 +1,20 @@
-.gameTitle {
-  text-align: center;
-}
-
+.gameTitle,
 .round {
   text-align: center;
+  color: antiquewhite;
+}
+
+body {
+  background-image: url("https://i.gifer.com/WBVk.gif");
+  font-family: "Courier New", Courier, monospace;
+  color: antiquewhite;
 }
 
 .gameSpaceScreen {
   height: 500px;
   display: flex;
-  justify-content: space-evenly;
-  background-image: url("space.gif");
+  justify-content: space-between;
+  /* background-image: url("space.gif"); */
 }
 
 .scors {
@@ -19,23 +23,18 @@
 }
 
 footer {
+  margin-top: 50px;
   text-align: center;
 }
 
-.button {
-  margin-top: 50vh;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
-
-.gameUpdate {
+#gameUpdate {
   display: none;
   position: absolute;
   padding: 2rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* //-- */
   height: 200px;
   width: 300px;
   background-color: aqua;
@@ -50,4 +49,80 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* -----------------------------------------------pop UP---------------------------------------------------------*/
+
+#triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-left: 100px solid red;
+  border-bottom: 50px solid transparent;
+}
+
+.gameUpdate {
+  position: absolute;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* position: relative; */
+  width: 200px;
+  height: auto;
+  padding-top: 10px;
+  background: rgb(37, 35, 35);
+  border-radius: 50% / 10%;
+  color: antiquewhite;
+  text-align: center;
+  text-indent: 0.1em;
+}
+.gameUpdate:before {
+  content: "";
+  position: absolute;
+  /* top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%; */
+  background: inherit;
+  border-radius: 5% / 50%;
+}
+
+/* /////////////////////////////////////////////////////////////////button// */
+
+.button {
+  margin-bottom: 20px;
+  /* height: auto;
+  width: auto; */
+  border-radius: 50%;
+  margin-left: 42%;
+  text-align: center;
+}
+
+button {
+  --c: #913822;
+  box-shadow: 0 0 0 0.1em inset var(--c);
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p, 0%)) 0%,
+    var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p, 0%)) 100%;
+  background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+  outline-offset: 0.1em;
+  transition: background-size 0.4s, background-position 0s 0.4s;
+}
+button:hover {
+  --_p: 100%;
+  transition: background-position 0.4s, background-size 0s;
+}
+button:active {
+  box-shadow: 0 0 9e9Q inset #0009;
+  background-color: var(--c);
+  color: #fff;
+}
+
+button {
+  font-family: system-ui, sans-serif;
+  font-size: 3.5rem;
+  cursor: pointer;
+  padding: 0.1em 0.6em;
+  font-weight: bold;
+  border: none;
+}

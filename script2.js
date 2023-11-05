@@ -67,17 +67,17 @@
 //   }
 // }
 // const usAssembly = new User();
-// const newAlien = new Alien(3, 3, 0.6);
+// // const newAlien = new Alien(3, 3, 0.6);
 
 // ///////////////////////////////////////////////////////////////////
-// // let newAlienArr = [
-// //   creatAlien(),
-// //   creatAlien(),
-// //   creatAlien(),
-// //   creatAlien(),
-// //   creatAlien(),
-// //   creatAlien(),
-// // ];
+// let newAlien = [
+//   creatAlien(),
+//   creatAlien(),
+//   creatAlien(),
+//   creatAlien(),
+//   creatAlien(),
+//   creatAlien(),
+// ];
 // console.log(newAlien);
 // console.log(newAlien[alienNumber]);
 // //--------------------------DOM Section-------------------------//
@@ -100,10 +100,21 @@
 // const alienImg = document.querySelector(".alienImg");
 // alienImg.setAttribute("src", aliensArray[0]);
 
-// function displayScors(playerScore, plyerClass) {
+// //---Functions---//
+// function creatAlien() {
+//   let newAlienFirePower = Math.floor(Math.random() * 4) + 2;
+//   let newAlienHull = Math.floor(Math.random() * 6) + 3;
+//   let newAlienAccuracy = Math.random() * (0.8 - 0.6) + 0.6;
+//   newAlienAccuracy = newAlienAccuracy.toFixed(1);
+//   const newAlien = new Alien(newAlienHull, newAlienFirePower, newAlienAccuracy);
+//   //   alienImg.setAttribute("src", aliensArray[roundCount]);
+//   return newAlien;
+// }
+
+// function displayScors(playerScore, scoreArr) {
 //   const scoreTrack = ["Hull :", "Fire Power :", "Accuracy :"];
 //   for (let i = 0; i < playerScore.length; i++) {
-//     let scoreArr = plyerClass.getScores();
+//     // let scoreArr = plyerClass.getScores();
 //     playerScore[i].textContent = `${scoreTrack[i]}${scoreArr[i]}`;
 //   }
 // }
@@ -111,10 +122,10 @@
 // function checkScores() {
 //   if (usAssembly.hull <= 0) {
 //     displayUpdateScreen(2000, "you lossssss");
-//   } else if (newAlien.hull <= 0) {
+//   } else if (newAlien[alienNumber].hull <= 0) {
 //     displayUpdateScreen(2000, "You killed the alien");
-//     displayUpdateScreen(2000, `alien hull ${newAlien.hull}`);
-//     nextRound();
+//     displayUpdateScreen(2000, `alien hull ${newAlien[alienNumber].hull}`);
+//     nextRound1();
 //     const clearTimeOut = setTimeout(retreat, 4000);
 //     if (roundCount + 1 === 6) {
 //       displayUpdateScreen(3000, "You Just won the game");
@@ -124,9 +135,16 @@
 //       roundCount = roundCount + 1;
 //       alienNumber += 1;
 //     }
-//   } else if (newAlien.hull >= 0) {
+//   } else if (newAlien[alienNumber].hull >= 0) {
 //     return;
 //   }
+// }
+
+// function nextRound1() {
+//   alienImg.setAttribute("src", aliensArray[roundCount]);
+//   titleRound.textContent = `Round : ${roundCount + 1}`;
+//   let alienScore = newAlien[alienNumber].getScores();
+//   displayScors(alienScore, alienScore);
 // }
 
 // function nextRound() {
@@ -143,7 +161,8 @@
 //     // newAlien.changeAllScors(newAlienHull, newAlienFirePower, newAlienAccuracy);
 //     alienImg.setAttribute("src", aliensArray[roundCount]);
 //     titleRound.textContent = `Round : ${roundCount + 1}`;
-//     displayScors(alienScore, newAlien);
+//     let alienScore = newAlien[alienNumber].getScores();
+//     displayScors(alienScore, alienScore);
 //   }
 // }
 
@@ -192,21 +211,20 @@
 // //---Event Listeners--//
 // attackButton.addEventListener("click", (evt) => {
 //   while (true) {
-//     // newAlien = alienList[0];
 //     gameUpdate("you Attack");
 //     let randomNumber1 = Math.random();
 //     if (randomNumber1 < usAssembly.accuracy) {
 //       displayUpdateScreen(1000, "the alien got hit");
-//       newAlien.gotHitted(usAssembly.firepower);
-//       displayScors(alienScore, newAlien);
+//       newAlien[alienNumber].gotHitted(usAssembly.firepower);
+//       displayScors(alienScore, newAlien[alienNumber]);
 //       checkScores();
 //       return;
 //     } else if (randomNumber1 > usAssembly.accuracy) {
 //       displayUpdateScreen(1000, "Aliens survived");
 //       displayUpdateScreen(2000, "Aliens will Attack");
-//       if (Math.random() < newAlien.accuracy) {
+//       if (Math.random() < newAlien[alienNumber].accuracy) {
 //         displayUpdateScreen(3000, "You have been hitten");
-//         usAssembly.gotHitted(newAlien.firepower);
+//         usAssembly.gotHitted(newAlien[alienNumber].firepower);
 //         displayScors(userScore, usAssembly);
 //         checkScores();
 //         return;
