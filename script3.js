@@ -129,9 +129,10 @@ function checkScores(newAlien) {
     displayUpdateScreen(2000, "You killed the alien");
     displayUpdateScreen(2000, `alien hull is ${newAlien.hull}`);
     if (roundCount + 1 === 6) {
+      //------------- u won
+      //   gameUpdateScreen.setAttribute("class", "badge-ribbon");
       clearUpdateScreen();
       displayUpdateScreen(3000, "You Just won the game");
-      // disable the update game screen
       const disableUpdateScreenTimeout = setTimeout(disableScreenUpdate, 5000);
       const displayPlayAgainScreenTimeout = setTimeout(
         displyPlayAgainScreen,
@@ -176,12 +177,15 @@ function reset() {
 
 function retreat() {
   clearUpdateScreen();
+  attackButton.style.display = "none";
   const retreatTxt = document.createElement("p");
   const yesButton = document.createElement("button");
   const noButton = document.createElement("button");
   retreatTxt.textContent = "Run A Way";
   yesButton.textContent = "Yes";
-  noButton.textContent = "Not happening";
+  noButton.textContent = "No";
+  yesButton.style.backgroundColor = "#913822";
+  noButton.style.backgroundColor = "#913822";
   gameUpdateScreen.appendChild(retreatTxt);
   gameUpdateScreen.appendChild(yesButton);
   gameUpdateScreen.appendChild(noButton);
@@ -194,7 +198,7 @@ function retreat() {
   });
   noButton.addEventListener("click", (e) => {
     clearUpdateScreen();
-    return;
+    attackButton.style.display = "block";
   });
 }
 
