@@ -16,10 +16,6 @@ class Alien {
     this.accuracy = accuracy;
   }
 
-  methodFromExample() {
-    return this.name;
-  }
-
   getScores() {
     return [this.hull, this.firepower, this.accuracy];
   }
@@ -40,10 +36,6 @@ class User {
     this.hull = hull;
     this.firepower = firepower;
     this.accuracy = accuracy;
-  }
-
-  methodFromExample() {
-    return this.name;
   }
 
   getScores() {
@@ -180,7 +172,7 @@ function retreat() {
   const retreatTxt = document.createElement("p");
   const yesButton = document.createElement("button");
   const noButton = document.createElement("button");
-  retreatTxt.textContent = "Run A Way";
+  retreatTxt.textContent = "Run Away";
   yesButton.textContent = "Yes";
   noButton.textContent = "No";
   yesButton.style.backgroundColor = "antiquewhite";
