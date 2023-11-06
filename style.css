@@ -23,7 +23,6 @@ body {
   height: 500px;
   display: flex;
   justify-content: space-between;
-  /* background-image: url("space.gif"); */
 }
 
 .scors {
@@ -70,6 +69,8 @@ footer {
   transform: translate(-50%, -50%);
   background-color: antiquewhite;
   border-radius: 50%;
+  font-size: x-large;
+  font-weight: 700;
 }
 
 .AttackButton {
@@ -112,11 +113,17 @@ footer {
 }
 
 /* -----------------You Won Class --------------- */
+.padge {
+  display: none;
+}
 .badge-ribbon {
+  color: black;
+  font-weight: 900;
+  padding-top: 5px;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
-  background: rgb(37, 35, 35);
+  background: antiquewhite;
   height: 100px;
   width: 100px;
   border-radius: 50px;
@@ -125,7 +132,7 @@ footer {
 .badge-ribbon:after {
   content: "";
   position: absolute;
-  border-bottom: 70px solid rgb(37, 35, 35);
+  border-bottom: 70px solid antiquewhite;
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
   top: 70px;
