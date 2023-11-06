@@ -8,12 +8,6 @@ const aliensArray = [
   "https://media3.giphy.com/media/5xaOcLQKkS2ZYcRDItO/giphy.gif?cid=6c09b952cr03t8d37ug7xxz0roylbubdpcy230dwvfuf91rq&ep=v1_stickers_related&rid=giphy.gif&ct=s",
 ];
 
-const coolImgArryBackground = [
-  "https://media1.giphy.com/media/RtpmUzMbynBeCgEa5E/giphy.gif",
-  "https://i.gifer.com/WBVk.gif",
-  "https://media0.giphy.com/media/nKDErGClW3lsRiZ3p9/giphy.gif",
-];
-
 //---------------------Classes for Players--------------//
 class Alien {
   constructor(hull, firepower, accuracy) {
